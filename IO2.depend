@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1513789297 source:c:\users\elgha_000\documents\io2\main.cpp
+	"User.cpp"
+	<vector>
+	<iostream>
+	<cstdlib>
+
+1513792155 c:\users\elgha_000\documents\io2\user.cpp
+	"User.h"
+	<iostream>
+	<cstdlib>
+	<vector>
+	<functional>
+	<string>
+
+1513789541 c:\users\elgha_000\documents\io2\user.h
+	<string>
+	<vector>
+
