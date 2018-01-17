@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  unittest1.cpp
+c:\users\karol\desktop\iopoprawione_polaczone\io\user.cpp(122): warning C4715: "User::authenticateUser”: niewszystkie ścieżki kodu zwracają wartość
+     Trwa tworzenie biblioteki C:\Users\Karol\Desktop\IOPoprawione_polaczone\x64\Debug\Testy Karol.lib i obiektu C:\Users\Karol\Desktop\IOPoprawione_polaczone\x64\Debug\Testy Karol.exp
+  Testy Karol.vcxproj -> C:\Users\Karol\Desktop\IOPoprawione_polaczone\x64\Debug\Testy Karol.dll
+  Testy Karol.vcxproj -> C:\Users\Karol\Desktop\IOPoprawione_polaczone\x64\Debug\Testy Karol.pdb (Partial PDB)

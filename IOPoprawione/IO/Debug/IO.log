@@ -1,3 +1,6 @@
-﻿  main.cpp
-  IO.vcxproj -> C:\Users\Karol\Desktop\Nowy folder\IOPoprawione\Debug\IO.exe
-  IO.vcxproj -> C:\Users\Karol\Desktop\Nowy folder\IOPoprawione\Debug\IO.pdb (Partial PDB)
+﻿  User.cpp
+c:\users\karol\desktop\iopoprawione_polaczone\io\user.cpp(158): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\karol\desktop\iopoprawione_polaczone\io\user.cpp(175): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\karol\desktop\iopoprawione_polaczone\io\user.cpp(118): warning C4715: "User::authenticateUser”: niewszystkie ścieżki kodu zwracają wartość
+  IO.vcxproj -> C:\Users\Karol\Desktop\IOPoprawione_polaczone\Debug\IO.exe
+  IO.vcxproj -> C:\Users\Karol\Desktop\IOPoprawione_polaczone\Debug\IO.pdb (Partial PDB)
