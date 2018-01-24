@@ -3,7 +3,7 @@
 vector<User> User::users;
 vector <size_t> User::hashedpasswords;
 
-User::User(string username, string password, string name, string surname, string email, string salt) {
+User::User(string username, string password, string name, string surname, string email, string salt, Role role) {
 	this->username = username;
 	this->password = password;
 	this->name = name;
@@ -11,10 +11,10 @@ User::User(string username, string password, string name, string surname, string
 	this->email = email;
 	this->isLogged = false;
 	this->salt = salt;
+	this->role = role;
 }
 
-vector<User> User::getUsersVector()
-{
+vector<User> User::getUsersVector(){
 	return users;
 }
 
@@ -28,22 +28,39 @@ string User::getEmail() {
 
 string User::getName() {
 	return this->name;
-};
+}
 
 string User::getSurname() {
 	return this->surname;
 }
 
-string User::getSalt()
-{
-	return string();
+string User::getSalt(){
+	return this->salt;
 }
 
+User::Role User::getRole(){
+	return this->role;
+}
+
+
+bool User::isAuthorized(User user) {
+	if (user.getRole() == roleManager) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool User::logout() {
+	this->isLogged = false;
+	return true;
+}
 
 bool User::isLoggedIn() {
 	return this->isLogged;
 }
-bool User::registerUser(string username, string password, string name, string surname, string email)
+bool User::registerUser(string username, string password, string name, string surname, string email, Role role = Role::roleDeveloper)
 {
 	try
 	{
@@ -94,16 +111,10 @@ static string gen_random_salt(std::string::size_type length) {
 }
 
 bool User::authenticateUser(string username, string password) {
-	for (size_t i = 0; i < users.size(); ++i)
-	{
-		if (users[i].email == username || users[i].username == username)
-		{
-			string salt= gen_random_salt(32);
-			vector <size_t> hashedpasswords2;
-			std::hash<std::string> HashForPassword2;
-			size_t specificHash2 = HashForPassword2(password + users[i].salt);
-			if (specificHash2 == hashedpasswords[i])
-			{
+	for (size_t i = 0; i < users.size(); ++i){
+		if (users[i].email == username || users[i].username == username){
+			std::hash<std::string> hash;
+			if (hash(password + users[i].salt) == hashedpasswords[i]){
 				users[i].isLogged = true;
 				system("cls");
 				cout << "Zalogowano, witaj " << users[i].getName() << " " << users[i].getSurname() << "\n\n";
@@ -114,11 +125,9 @@ bool User::authenticateUser(string username, string password) {
 				return false;
 			}
 		}
-		else {
-			cout << "Nieprawidlowy login lub e-mail\n";
-			return false;
-		}
 	}
+	cout << "Nieprawidlowy login lub e-mail\n";
+	return false;
 }
 
 string User::gen_random_salt(std::string::size_type length)

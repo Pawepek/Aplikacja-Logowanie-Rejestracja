@@ -9,8 +9,9 @@
 		setlocale(LC_ALL, "");
 
 		//sample user
-		//User::registerUser("example", "qwerty123", "Jan", "Kowalski", "jan@kowalski.pl");
-
+		User::registerUser("admin", "asdf11", "Admin", "Adminowicz", "admin@admin.pl", User::Role::roleManager);
+		User::registerUser("example", "qwerty123", "Jan", "Kowalski", "jan@kowalski.pl", User::Role::roleDeveloper);
+		User::registerUser("example2", "qwerty123", "Jan2", "Kowalski2", "jan@kowalski2.pl", User::Role::roleDeveloper);
 		int choice;
 		while(true) {
 			cout << "Jeœli jeszcze nie masz konta wybierz 1, aby siê zarejestrowaæ \nWybierz 2, aby siê zalogowaæ\n";
@@ -33,7 +34,7 @@
 				cin >> email;
 				
 				if (!User::validateInputs(username, password, name, surname, email)) {
-					User::registerUser(username, password, name, surname, email);
+					User::registerUser(username, password, name, surname, email,User::roleDeveloper);
 				}
 				else
 					cout << "Nie uda³o siê utworzyæ u¿ytkownika ze wzglêdu na niepoprawne dane\n";

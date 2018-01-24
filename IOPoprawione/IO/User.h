@@ -10,6 +10,12 @@
 #include <regex>
 using namespace std;
 class User {
+public:
+	enum Role {
+		roleDeveloper,
+		roleManager
+	};
+private:
 	static vector <User> users;
 	static vector <size_t> hashedpasswords;
 	string username;
@@ -20,15 +26,17 @@ class User {
 	string salt;
 	int id;
 	bool isLogged;
+	Role role;
 
 	User();
-	User(string username, string password, string name, string surname, string email, string salt);
+	User(string username, string password, string name, string surname, string email, string salt, Role role = Role::roleDeveloper);
 
 	static string gen_random_salt(std::string::size_type length);
 	static void validateEmail(string);
 	static void validatePassword(string);
 	static void validateName(string);
 	static void validateUsername(string);
+	
 public:
 	static vector <User> getUsersVector();
 	string getUsername();
@@ -36,8 +44,11 @@ public:
 	string getName();
 	string getSurname();
 	string getSalt();
+	Role getRole();
 	bool isLoggedIn();
-	static bool registerUser(string username, string password, string name, string surname, string email);
+	bool logout();
+	bool isAuthorized(User user);
+	static bool registerUser(string username, string password, string name, string surname, string email, Role role);
 	static bool authenticateUser(string username, string password);
 	static bool validateInputs(string, string, string, string, string);
 };
